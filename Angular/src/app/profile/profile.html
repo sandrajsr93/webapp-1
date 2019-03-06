@@ -1,8 +1,8 @@
 <!--=========================
         slide menu 
         ==========================-->
-<section>
-	<div class="container contents">
+<section [ngStyle]="marginFooter">
+	<div class="container contents" >
 		<div class="row">
 			<div class="col-lg-2">
 				<div class="nav nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
@@ -80,7 +80,7 @@
 								 aria-controls="showAddList" (click)="changeShowAddList()">
 									<i class="ion-plus-circled"></i>
 								</button>
-								<div *ngIf="showAddList" id="showAddList">
+								<div [ngbCollapse]="isCollapsed" id="showAddList">
 									<input #listName type="text" name="listName" tabindex="2" class="form-group form-control" placeholder="Nombre de la lista" value=""
 									[formControl]="newListValidation.controls['name']" />
 									<div class="row form-group">
