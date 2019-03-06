@@ -42,9 +42,6 @@ export class ProfileComponent {
   private urlPDF: SafeResourceUrl;
   private errorCreateList = false;
   private isCollapsed: boolean = true;
-  public marginFooter = {
-    'margin-bottom': '0em'
-  }
 
   constructor(private decorator: DecoratorService, private userComponent: UserComponent, private serviceList: ListsService, private userService: UserService, private fb: FormBuilder, private imageService: ImageService, private router: Router, private locStrat: LocationStrategy, private sanitized: DomSanitizer) {
     this.decorator.activeButton("profile");
@@ -72,16 +69,6 @@ export class ProfileComponent {
         this.isPopState = false;
       }
     });
-  }
-
-  public changeMarginFooter(){
-    if (this.isCollapsed) {
-      this.isCollapsed = false;
-      this.marginFooter["margin-bottom"] = "40em";
-    } else {
-      this.isCollapsed = true;
-      this.marginFooter["margin-bottom"] = "5em";
-    }
   }
 
   private fileChange(inputFile) {
