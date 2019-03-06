@@ -1,6 +1,6 @@
 package com.trackorjargh.grafics;
 
-public class Grafics {
+public class Grafics{
 	private String name;
 	private double points;
 	
