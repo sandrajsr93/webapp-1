@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.trackorjargh.grafics.NumberItemByGende;
+import com.trackorjargh.grafics.Grafics;
 import com.trackorjargh.javaclass.Gender;
 import com.trackorjargh.javarepository.GenderRepository;
 
@@ -24,8 +24,8 @@ public class ApiGenderController {
 
 
 	@RequestMapping(value = "/generos/grafico", method = RequestMethod.GET)
-	public List<NumberItemByGende> getGraphicGende() {
-		List<NumberItemByGende> listGende = new ArrayList<>();
+	public List<Grafics> getGraphicGende() {
+		List<Grafics> listGende = new ArrayList<>();
 
 		int sumGende;
 		for (Gender gende : genderRepository.findAll()) {
@@ -34,7 +34,7 @@ public class ApiGenderController {
 			sumGende += gende.getBooks().size();
 			sumGende += gende.getShows().size();
 
-			listGende.add(new NumberItemByGende(gende.getName(), sumGende));
+			listGende.add(new Grafics(gende.getName(), sumGende));
 		}
 
 		return listGende;
