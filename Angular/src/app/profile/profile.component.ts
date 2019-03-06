@@ -41,6 +41,7 @@ export class ProfileComponent {
   private newListValidation: FormGroup;
   private urlPDF: SafeResourceUrl;
   private errorCreateList = false;
+  private isCollapsed: boolean = true;
 
   constructor(private decorator: DecoratorService, private userComponent: UserComponent, private serviceList: ListsService, private userService: UserService, private fb: FormBuilder, private imageService: ImageService, private router: Router, private locStrat: LocationStrategy, private sanitized: DomSanitizer) {
     this.decorator.activeButton("profile");
@@ -90,7 +91,9 @@ export class ProfileComponent {
 
   private loadLists() {
     this.serviceList.getContentList().subscribe(
-      lists => this.lists = lists
+      lists => {
+        this.lists = lists
+      }
     );
   }
 
