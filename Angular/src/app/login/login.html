@@ -1,5 +1,5 @@
 <!-- Login / Register -->
-<section id="loginRegister">
+<section id="loginRegister" [ngStyle]="marginFooter">
 	<div class="container">
 		<div class="form-control text-center" id="loginHeader">
 			<span>
@@ -37,7 +37,7 @@
 				<!-- Register segment -->
 				<div class="card-header" role="tab" id="register">
 					<h5 class="mb-0">
-						<a id="RegsDropdown" [routerLink]="" (click)="isCollapsed = !isCollapsed" [attr.aria-expanded]="!isCollapsed" aria-controls="collapse">
+						<a id="RegsDropdown" (click)="changeMarginFooter()" [attr.aria-expanded]="!isCollapsed" aria-controls="collapse">
 							Registrarse </a>
 					</h5>
 				</div>
