@@ -3,6 +3,7 @@ package com.trackorjargh;
 import static java.lang.invoke.MethodHandles.lookup;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -29,17 +30,12 @@ public class TestE2E {
 		//Load form
 		WebElement userField = driver.findElement(By.name("user"));
 		WebElement passField = driver.findElement(By.name("password"));
-		WebElement loginSubmit = driver.findElement(By.name("login-submit"));
 		
 		//Write credentials
 		userField.sendKeys(name);
 		passField.sendKeys(pass);
 		
-		//Wait click
-		wait.until(ExpectedConditions.elementToBeClickable(By.name("login-submit")));
-		
-		//Click login
-		loginSubmit.click();	
+		driver.findElement(By.name("password")).sendKeys(Keys.ENTER);
 		
 		//Check login
 		wait.withTimeout(1, TimeUnit.SECONDS).until(ExpectedConditions.visibilityOfElementLocated(By.className("carousel-content")));
