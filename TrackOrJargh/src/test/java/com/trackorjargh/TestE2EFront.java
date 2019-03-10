@@ -17,15 +17,19 @@ import io.github.bonigarcia.SeleniumExtension;
 
 @ExtendWith(SeleniumExtension.class)
 public class TestE2EFront extends TestE2E{
-    ChromeDriver driver;
-
+	
+	private ChromeDriver driver;
+	private String baseurl;
+	
     public TestE2EFront(ChromeDriver driver) {
         this.driver = driver;
+        this.baseurl = "http://localhost:4200";
     }
     
     @Test
     public void checkCreateList() {
-    	driver.get("http://localhost:4200/login");
+    	//Login
+    	driver.get(baseurl + "/login");
     	this.loginUser(driver, "oscar", "1234");
  
     	//Go to profile
@@ -64,6 +68,7 @@ public class TestE2EFront extends TestE2E{
     	List<WebElement> deleteListsButtons = driver.findElements(By.name("deleteList"));
     	deleteListsButtons.get(deleteListsButtons.size()-1).click();
     	
+    	//Logout
     	this.logout(driver);
     }
 }
