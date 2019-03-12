@@ -65,7 +65,7 @@ public class TestE2E {
 
 		assertThat(logoutButton.getText()).isEqualToIgnoringCase("login");
 
-		log.info("Loggout successful, user {}", name);
+		log.info("Logout successful, user {}", name);
 	}
 
 }

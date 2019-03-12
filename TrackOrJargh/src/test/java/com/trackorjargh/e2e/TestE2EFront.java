@@ -49,7 +49,7 @@ public class TestE2EFront extends TestE2E{
     	buttonAdd.click();
     	
     	//Show add lists
-    	browser.waitUntil(ExpectedConditions.visibilityOfElementLocated(By.id("showAddList")), "No show add list", 1);
+    	browser.waitUntil(ExpectedConditions.visibilityOfElementLocated(By.id("showAddList")), "add list not shown", 1);
     	
     	//Create new list
     	WebElement listName = this.browser.getDriver().findElement(By.name("listName"));
