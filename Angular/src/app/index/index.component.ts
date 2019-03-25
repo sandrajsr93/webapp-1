@@ -10,6 +10,7 @@ import { BookService } from '../books/book.service';
 import { GenderService } from '../genders/gender.service';
 
 import * as c3 from 'c3';
+import { environment } from '../../environments/environment.prod';
 
 @Component({
   selector: 'index',
@@ -19,7 +20,8 @@ import * as c3 from 'c3';
 
 export class IndexComponent {
 
-	private carousel = [];
+	public carousel = [];
+	public URL = environment.url.substring(0, environment.url.length - 1);
 
   constructor(private decorator: DecoratorService, private commonFunction: CommonFunction, private filmService: FilmService, private showService: ShowService, private bookService: BookService, private genderService: GenderService) { 
 		this.decorator.activeButton("index");

@@ -6,7 +6,7 @@
 		<div id="introCarousel" class="carousel slide carousel-fade" data-ride="carousel">
 			<ngb-carousel class="carousel-inner">
 				<ng-template *ngFor="let film of filmsCarousel" ngbSlide>
-					<div class="carousel-item active" [style.backgroundImage]="'url(https://localhost:8443/'+ film.image +')'">
+					<div class="carousel-item active" [style.backgroundImage]="'url(' + URL + film.image +')'">
 						<div class="carousel-container">
 							<div class="carousel-content">
 								<h2>{{film.name}}</h2>
@@ -40,7 +40,7 @@
 			<div id="elements" class="row ">
 				<div *ngFor="let film of films" class="col-lg-3 col-md-3 portfolio-item filter-app wow fadeInUp">
 					<div class="portfolio-wrap">
-						<figure [style.backgroundImage]="'url(https://localhost:8443/'+ film.image +')'">
+						<figure [style.backgroundImage]="'url(' + URL + film.image +')'">
 							<p class="textPortfolio">{{film.synopsis}}</p>
 						</figure>
 

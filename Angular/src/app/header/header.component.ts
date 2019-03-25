@@ -13,7 +13,9 @@ import { UserComponent } from '../user/user.component';
 
 export class HeaderComponent {
   
-  constructor(private decorator: DecoratorService,  private userComponent: UserComponent, private router: Router) { }
+  public isNavbarCollapsed;
+  
+  constructor(public decorator: DecoratorService,  private userComponent: UserComponent, private router: Router) { }
 
   @HostListener("window:scroll", [])
   onWindowScroll() {

@@ -8,6 +8,7 @@ import { ListsService } from '../lists/lists.service';
 import { Show } from '../Interfaces/Show/show.component';
 
 import { UserComponent } from '../user/user.component';
+import { environment } from '../../environments/environment.prod';
 
 
 
@@ -20,28 +21,29 @@ const NUM_ELEMENS_FROM_PAGE = 10;
 })
 
 export class ShowsComponent {
-  private shows: Show[] = [];
-  private showsCarousel: Show[] = [];
+  public URL = environment.url.substring(0, environment.url.length - 1);
+  public shows: Show[] = [];
+  public showsCarousel: Show[] = [];
 
   private isShowShows = true;
 
   private totalPages: number;
   private countPages = 1;
-  private morePages = true;
+  public morePages = true;
 
-  private addedContent = false;
-  private errorAddedContent = false;
+  public addedContent = false;
+  public errorAddedContent = false;
 
 
-  private allShows = {
+  public allShows = {
     "filter-active": true
   }
 
-  private bestShows = {
+  public bestShows = {
     "filter-active": false
   }
 
-  constructor(private decorator: DecoratorService, private userComponent: UserComponent, private commonFunction: CommonFunction, private showService: ShowService, private serviceList: ListsService) {
+  constructor(private decorator: DecoratorService, public userComponent: UserComponent, private commonFunction: CommonFunction, private showService: ShowService, private serviceList: ListsService) {
     this.decorator.activeButton("shows");
   }
 
@@ -67,14 +69,14 @@ export class ShowsComponent {
     this.bestShows["filter-active"] = false;
   }
 
-  private showShows() {
+  public showShows() {
     this.cleanLets();
     this.isShowShows = true;
     this.allShows["filter-active"] = true;
     this.totalPages = this.commonFunction.addElementsToArray(this.shows, this.showService.getShows(0, NUM_ELEMENS_FROM_PAGE));
   }
 
-  private showBestShows() {
+  public showBestShows() {
     this.cleanLets();
     this.isShowShows = false;
     this.bestShows["filter-active"] = true;

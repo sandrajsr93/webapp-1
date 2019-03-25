@@ -6,7 +6,7 @@
         <div id="introCarousel" class="carousel slide carousel-fade" data-ride="carousel">
             <ngb-carousel class="carousel-inner">
                 <ng-template *ngFor="let book of booksCarousel" ngbSlide>
-                    <div class="carousel-item active" [style.backgroundImage]="'url(https://localhost:8443/'+ book.image +')'">
+                    <div class="carousel-item active" [style.backgroundImage]="'url(' + URL+ book.image +')'">
                         <div class="carousel-container">
                             <div class="carousel-content">
                                 <h2>{{book.name}}</h2>
@@ -40,7 +40,7 @@
             <div id="elements" class="row ">
                 <div *ngFor="let book of books" class="col-lg-3 col-md-3 portfolio-item filter-app wow fadeInUp">
                     <div class="portfolio-wrap">
-                        <figure [style.backgroundImage]="'url(https://localhost:8443/'+ book.image +')'">
+                        <figure [style.backgroundImage]="'url(' + URL + book.image +')'">
                             <p class="textPortfolio">{{book.synopsis}}</p>
                         </figure>
 
