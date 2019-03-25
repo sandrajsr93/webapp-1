@@ -15,10 +15,10 @@ import { UserService } from '../user/user.service';
 
 export class ChangePassComponent {
 
-  private validatorPass: FormGroup;
+  public validatorPass: FormGroup;
 
   private code: string;
-  private username: string;
+  public username: string;
 
   constructor(private decorator: DecoratorService, private fb: FormBuilder, private userService: UserService, private router: Router, private activatedRoute: ActivatedRoute, private location: Location) {
     this.decorator.activeButton("forgotpass");
@@ -48,7 +48,7 @@ export class ChangePassComponent {
     );
   }
 
-  private changePass(pass: string) {
+  public changePass(pass: string) {
     this.userService.changeForgotPass(this.code, pass).subscribe(
       response => {
         if (response.status === 200) {

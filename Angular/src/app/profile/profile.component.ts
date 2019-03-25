@@ -12,6 +12,7 @@ import { ListsService } from '../lists/lists.service';
 import { UserService } from '../user/user.service';
 import { ImageService } from '../uploadimage/image.service'
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
+import { environment } from '../../environments/environment';
 
 class modifyUser {
   email?: string;
@@ -26,23 +27,26 @@ class modifyUser {
 })
 
 export class ProfileComponent {
-
+  public URL: string = environment.url.substring(0, environment.url.length - 1);
   private isPopState = false;
-  private show = "ACOUNT";
-  private user = this.userComponent.user;
+  public show = "ACOUNT";
+  public user = this.userComponent.user;
   private file = null;
-  private lists = [];
-  private printList = [];
-  private pdf = false;
-  private profileValidation: FormGroup;
-  private showAddList = false;
-  private isProfileEdited = false;
-  private errorProfileEdited = false;
-  private newListValidation: FormGroup;
-  private urlPDF: SafeResourceUrl;
-  private errorCreateList = false;
-  private isCollapsed: boolean = true;
-
+  public lists = [];
+  public printList = [];
+  public pdf = false;
+  public profileValidation: FormGroup;
+  public showAddList = false;
+  public isProfileEdited = false;
+  public errorProfileEdited = false;
+  public newListValidation: FormGroup;
+  public urlPDF: SafeResourceUrl;
+  public errorCreateList = false;
+  public isCollapsed: boolean = true;
+  public marginFooter = {
+    'margin-bottom': '0em'
+  }
+  
   constructor(private decorator: DecoratorService, private userComponent: UserComponent, private serviceList: ListsService, private userService: UserService, private fb: FormBuilder, private imageService: ImageService, private router: Router, private locStrat: LocationStrategy, private sanitized: DomSanitizer) {
     this.decorator.activeButton("profile");
     this.newValidator();
@@ -71,17 +75,17 @@ export class ProfileComponent {
     });
   }
 
-  private fileChange(inputFile) {
+  public fileChange(inputFile) {
     if (inputFile.files.length > 0) {
       this.file = inputFile.files[0];
     }
   }
 
-  private changePdf(change: boolean) {
+  public changePdf(change: boolean) {
     this.pdf = change;
   }
 
-  private changeShowAddList() {
+  public changeShowAddList() {
     if (this.showAddList) {
       this.showAddList = false;
     } else {
@@ -97,7 +101,7 @@ export class ProfileComponent {
     );
   }
 
-  private createList(listName: string) {
+  public createList(listName: string) {
     this.validateNewList();
     this.serviceList.createList(listName).subscribe(
      response => {
@@ -115,7 +119,7 @@ export class ProfileComponent {
     this.errorCreateList = false;
   }
 
-  private editUser(email: string, pass: string) {
+  public editUser(email: string, pass: string) {
     let editUser = new modifyUser();
 
     if (email !== "") {
@@ -181,13 +185,13 @@ export class ProfileComponent {
       });
   }
 
-  private changePass(passOne: String, passTwo: string) {
+  public changePass(passOne: String, passTwo: string) {
     if (passOne === "" && passTwo === "") {
       this.newValidator();
     }
   }
 
-  private deleteList(listName: string) {
+  public deleteList(listName: string) {
     this.serviceList.deleteList(listName).subscribe(
       lists => {
         this.loadLists();
@@ -197,7 +201,7 @@ export class ProfileComponent {
     )
   }
 
-  private deleteElem(listName: string, typeElem: string, itemName: string) {
+  public deleteElem(listName: string, typeElem: string, itemName: string) {
     this.serviceList.deleteElement(listName, typeElem, itemName).subscribe(
       lists => {
         this.loadLists();
@@ -213,7 +217,7 @@ export class ProfileComponent {
   }
 
   private loadUrlPdf(){
-    this.urlPDF = this.sanitized.bypassSecurityTrustResourceUrl("https://localhost:8443/crearpdflistas");
+    this.urlPDF = this.sanitized.bypassSecurityTrustResourceUrl(this.URL + "/crearpdflistas");
   }
 
 }

@@ -12,6 +12,7 @@ import { CommentBook } from '../Interfaces/Book/commentbook.component';
 import { PointBook } from '../Interfaces/Book/pointbook.component';
 
 import { UserComponent } from '../user/user.component';
+import { environment } from '../../environments/environment';
 
 @Component({
   selector: 'book-component',
@@ -20,16 +21,17 @@ import { UserComponent } from '../user/user.component';
 })
 
 export class BookComponent {
+  public URL = environment.url;
   private isPopState = false;
   private nameBook: string;
-  private book: Book;
-  private startBook: number;
+  public book: Book;
+  public startBook: number;
   private startBookUser = 0;
-  private commentsBook: CommentBook[] = [];
-  private relationBooks: Book[] = [];
-  private validationMessageForm: FormGroup;
+  public commentsBook: CommentBook[] = [];
+  public relationBooks: Book[] = [];
+  public validationMessageForm: FormGroup;
 
-  constructor(private decorator: DecoratorService, private userComponent: UserComponent, private sanitizer: DomSanitizer, private router: Router, private activatedRoute: ActivatedRoute, private bookService: BookService, private fb: FormBuilder, private locStrat: LocationStrategy) { 
+  constructor(private decorator: DecoratorService, public userComponent: UserComponent, private sanitizer: DomSanitizer, private router: Router, private activatedRoute: ActivatedRoute, private bookService: BookService, private fb: FormBuilder, private locStrat: LocationStrategy) { 
     this.decorator.clearActive();
 
     this.validationMessageForm = fb.group({
@@ -108,14 +110,14 @@ export class BookComponent {
     );
   }
 
-  private changePointUser() {
+  public changePointUser() {
     this.bookService.updatePoint(this.nameBook, { points: this.startBookUser }).subscribe(
       response => {
         this.loadPointBook();
       }
     )
   }
-  private deleteComment(id: number){
+  public deleteComment(id: number){
     this.bookService.deleteCommentBook(id).subscribe(
       response => {
         this.loadComments();

@@ -8,6 +8,7 @@ import { ListsService } from '../lists/lists.service';
 import { Film } from '../Interfaces/Film/film.component';
 
 import { UserComponent } from '../user/user.component';
+import { environment } from '../../environments/environment';
 
 const NUM_ELEMENS_FROM_PAGE = 10;
 
@@ -18,23 +19,24 @@ const NUM_ELEMENS_FROM_PAGE = 10;
 })
 
 export class FilmsComponent {
-  private films: Film[] = [];
-  private filmsCarousel: Film[] = [];
+  public URL = environment.url.substring(0, environment.url.length - 1);
+  public films: Film[] = [];
+  public filmsCarousel: Film[] = [];
 
   private isShowFilms = true;
 
   private totalPages: number;
   private countPages = 1;
-  private morePages = true;
+  public morePages = true;
 
-  private addedContent = false;
-  private errorAddedContent = false;
+  public addedContent = false;
+  public errorAddedContent = false;
 
-  private allFilms = {
+  public allFilms = {
     "filter-active": true
   }
 
-  private bestFilms = {
+  public bestFilms = {
     "filter-active": false
   }
 
@@ -64,14 +66,14 @@ export class FilmsComponent {
     this.bestFilms["filter-active"] = false;
   }
 
-  private showFilms() {
+  public showFilms() {
     this.cleanLets();
     this.isShowFilms = true;
     this.allFilms["filter-active"] = true;
     this.totalPages = this.commonFunction.addElementsToArray(this.films, this.filmService.getFilms(0, NUM_ELEMENS_FROM_PAGE));
   }
 
-  private showBestFilms() {
+  public showBestFilms() {
     this.cleanLets();
     this.isShowFilms = false;
     this.bestFilms["filter-active"] = true;

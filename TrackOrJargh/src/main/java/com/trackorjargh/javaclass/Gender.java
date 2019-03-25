@@ -18,18 +18,22 @@ public class Gender {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	
-	@JsonView(BasicInformation.class)
+	@JsonView({BasicInformation.class, ListInformation.class})
 	private String name;
 	
 	public interface BasicInformation {}
+	public interface ListInformation{}
 	
 	@ManyToMany(mappedBy="genders")
+	@JsonView(ListInformation.class)
 	private List<Film> films = new LinkedList<>();
 	
 	@ManyToMany(mappedBy="genders")
+	@JsonView(ListInformation.class)
 	private List<Shows> shows = new LinkedList<>();
 	
 	@ManyToMany(mappedBy="genders")
+	@JsonView(ListInformation.class)
 	private List<Book> books = new LinkedList<>();
 	
 	public Gender() {

@@ -7,7 +7,6 @@ import { DecoratorService } from '../header/decorator.service';
 
 import { UserComponent } from '../user/user.component';
 import { UserService } from '../user/user.service';
-import { PARAMETERS } from '@angular/core/src/util/decorators';
 
 @Component({
   selector: 'login',
@@ -16,19 +15,19 @@ import { PARAMETERS } from '@angular/core/src/util/decorators';
 })
 
 export class LoginComponent {
-  private isCollapsed = true;
-  private isEmailOrNameUsed = false;
-  private isNewUser = false;
-  private isChangePass = false;
-  private activateUser = false;
-  private userName = "";
-  private validationLoginForm: FormGroup;
-  private validationRegisterForm: FormGroup;
+  public isCollapsed = true;
+  public isEmailOrNameUsed = false;
+  public isNewUser = false;
+  public isChangePass = false;
+  public activateUser = false;
+  public userName = "";
+  public validationLoginForm: FormGroup;
+  public validationRegisterForm: FormGroup;
   public marginFooter = {
     'margin-bottom': '20em'
   }
-
-  constructor(private decorator: DecoratorService, private userComponent: UserComponent, private userService: UserService, private router: Router, private activatedRoute: ActivatedRoute, private fb: FormBuilder, private location: Location) {
+  
+  constructor(private decorator: DecoratorService, public userComponent: UserComponent, private userService: UserService, private router: Router, private activatedRoute: ActivatedRoute, private fb: FormBuilder, private location: Location) {
     this.decorator.activeButton("login");
 
     this.validationLoginForm = fb.group({
@@ -102,11 +101,11 @@ export class LoginComponent {
     }
   }
 
-  private loginUser(user: string, pass: string) {
+  public loginUser(user: string, pass: string) {
     this.userComponent.login(user, pass, this.router);
   }
 
-  private registerUser(name: string, pass: string, email: string) {
+  public registerUser(name: string, pass: string, email: string) {
 
     let user = {
       "name": name,

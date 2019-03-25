@@ -6,7 +6,7 @@
 		<div id="introCarousel" class="carousel slide carousel-fade" data-ride="carousel">
 			<ngb-carousel class="carousel-inner">
 				<ng-template *ngFor="let show of showsCarousel" ngbSlide>
-					<div class="carousel-item active" [style.backgroundImage]="'url(https://localhost:8443/'+ show.image +')'">
+					<div class="carousel-item active" [style.backgroundImage]="'url(' + URL + show.image +')'">
 						<div class="carousel-container">
 							<div class="carousel-content">
 								<h2>{{show.name}}</h2>
@@ -40,7 +40,7 @@
 			<div id="elements" class="row ">
 				<div *ngFor="let show of shows" class="col-lg-3 col-md-3 portfolio-item filter-app wow fadeInUp">
 					<div class="portfolio-wrap">
-						<figure [style.backgroundImage]="'url(https://localhost:8443/'+ show.image +')'">
+						<figure [style.backgroundImage]="'url(' + URL + show.image +')'">
 							<p class="textPortfolio">{{show.synopsis}}</p>
 						</figure>
 

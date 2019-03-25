@@ -13,10 +13,10 @@ import { UserService } from '../user/user.service';
 
 export class ForgotComponent {
 
-  private validatorEmail: FormGroup;
-  private isViewSuccesMessage = false;
-  private isViewErrorMessage = false;
-  private errorMessage = "";
+  public validatorEmail: FormGroup;
+  public isViewSuccesMessage = false;
+  public isViewErrorMessage = false;
+  public errorMessage = "";
 
   constructor(private decorator: DecoratorService, private fb: FormBuilder, private userService: UserService) { 
     this.decorator.activeButton("forgotpass");
@@ -26,7 +26,7 @@ export class ForgotComponent {
     });
   };
   
-  private checkEmail(email: string){
+  public checkEmail(email: string){
     this.isViewErrorMessage = false;
 
     this.userService.setForgotPass(email).subscribe(

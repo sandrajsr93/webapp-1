@@ -12,6 +12,7 @@ import { CommentFilm } from '../Interfaces/Film/commentfilm.component';
 import { PointFilm } from '../Interfaces/Film/pointfilm.component';
 
 import { UserComponent } from '../user/user.component';
+import { environment } from '../../environments/environment';
 
 @Component({
   selector: 'film-component',
@@ -20,17 +21,18 @@ import { UserComponent } from '../user/user.component';
 })
 
 export class FilmComponent {
+  public URL = environment.url.substring(0, environment.url.length - 1);
   private isPopState = false;
   private nameFilm: string;
-  private film: Film;
-  private startFilm: number;
+  public film: Film;
+  public startFilm: number;
   private startFilmUser = 0;
-  private url: SafeResourceUrl;
-  private commentsFilm: CommentFilm[] = [];
-  private relationFilms: Film[] = [];
-  private validationMessageForm: FormGroup;
+  public url: SafeResourceUrl;
+  public commentsFilm: CommentFilm[] = [];
+  public relationFilms: Film[] = [];
+  public validationMessageForm: FormGroup;
 
-  constructor(private decorator: DecoratorService, private userComponent: UserComponent, private sanitizer: DomSanitizer, private router: Router, private activatedRoute: ActivatedRoute, private filmService: FilmService, private fb: FormBuilder, private locStrat: LocationStrategy) {
+  constructor(private decorator: DecoratorService, public userComponent: UserComponent, private sanitizer: DomSanitizer, private router: Router, private activatedRoute: ActivatedRoute, private filmService: FilmService, private fb: FormBuilder, private locStrat: LocationStrategy) {
     this.decorator.clearActive();
 
     this.validationMessageForm = fb.group({
@@ -109,7 +111,7 @@ export class FilmComponent {
     )
   }
 
-  private changePointUser() {
+  public changePointUser() {
     this.filmService.updatePoint(this.nameFilm, { points: this.startFilmUser }).subscribe(
       response => {
         this.loadPointFilm();
@@ -117,7 +119,7 @@ export class FilmComponent {
     )
   }
 
-  private deleteComment(id: number){
+  public deleteComment(id: number){
     this.filmService.deleteCommentFilm(id).subscribe(
       response => {
         this.loadComments();
@@ -125,7 +127,7 @@ export class FilmComponent {
     );
   }
 
-  private newComment(message: string) {
+  public newComment(message: string) {
     this.validationMessageForm = this.fb.group({
       'message': [null, Validators.required],
     });

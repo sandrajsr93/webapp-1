@@ -8,6 +8,7 @@ import { ListsService } from '../lists/lists.service';
 import { Book } from '../Interfaces/Book/book.component';
 
 import { UserComponent } from '../user/user.component';
+import { environment } from '../../environments/environment';
 
 const NUM_ELEMENS_FROM_PAGE = 10;
 
@@ -18,27 +19,28 @@ const NUM_ELEMENS_FROM_PAGE = 10;
 })
 
 export class BooksComponent {
-  private books: Book[] = [];
-  private booksCarousel: Book[] = [];
+  public URL = environment.url;
+  public books: Book[] = [];
+  public booksCarousel: Book[] = [];
 
   private isShowBooks = true;
 
   private totalPages: number;
   private countPages = 1;
-  private morePages = true;
+  public morePages = true;
 
-  private addedContent = false;
-  private errorAddedContent = false;
+  public addedContent = false;
+  public errorAddedContent = false;
 
-  private allBooks = {
+  public allBooks = {
     "filter-active": true
   }
 
-  private bestBooks = {
+  public bestBooks = {
     "filter-active": false
   }
 
-  constructor(private decorator: DecoratorService, private userComponent: UserComponent, private commonFunction: CommonFunction, private bookService: BookService, private serviceList: ListsService) { 
+  constructor(private decorator: DecoratorService, public userComponent: UserComponent, private commonFunction: CommonFunction, private bookService: BookService, private serviceList: ListsService) { 
     this.decorator.activeButton("books");
   }
 
@@ -64,14 +66,14 @@ export class BooksComponent {
     this.bestBooks["filter-active"] = false;
   }
 
-  private showBooks() {
+  public showBooks() {
     this.cleanLets();
     this.isShowBooks = true;
     this.allBooks["filter-active"] = true;
     this.totalPages = this.commonFunction.addElementsToArray(this.books, this.bookService.getBooks(0, NUM_ELEMENS_FROM_PAGE));
   }
 
-  private showBestBooks() {
+  public showBestBooks() {
     this.cleanLets();
     this.isShowBooks = false;
     this.bestBooks["filter-active"] = true;
@@ -104,7 +106,7 @@ export class BooksComponent {
     }, 500);
   }
 
-  private addElemToList(nameList: string, bookName: string){
+  public addElemToList(nameList: string, bookName: string){
     let list = {
       name: nameList,
       books: [bookName],
