@@ -129,13 +129,12 @@
 								</div>
 							</div>
 
-							<div *ngIf="lists.length !== 0 && pdf">
-								<object [data]="urlPDF" width="100%" height="1000px" type='application/pdf'>
-									<p>Lo siento el pdf no se puede mostrar :(</p>
-									<a href="https://localhost:8443/crearpdflistas" target="_blank">Click
-										Here</a>
-								</object>
-							</div>
+								<div *ngIf="lists.length !== 0 && pdf">
+									<object [data]="urlPDF" width="100%" height="1000px" type='application/pdf'>
+										<p>Lo siento el pdf no se puede mostrar :(</p>
+										<a href="{{URL}}crearpdflistas" target="_blank">Click Here</a>
+									</object>
+								</div>
 						</form>
 					</div>
 				</div>

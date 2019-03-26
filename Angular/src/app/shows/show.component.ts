@@ -12,6 +12,7 @@ import { CommentShow } from '../Interfaces/Show/commentshow.component';
 import { PointShow } from '../Interfaces/Show/pointshow.component';
 
 import { UserComponent } from '../user/user.component';
+import { environment } from '../../environments/environment';
 
 @Component({
   selector: 'show-component',
@@ -20,17 +21,18 @@ import { UserComponent } from '../user/user.component';
 })
 
 export class ShowComponent {
+  public URL = environment.url.substring(0, environment.url.length - 1);
   private isPopState = false;
   private nameShow: string;
-  private show: Show;
-  private startShow: number;
+  public show: Show;
+  public startShow: number;
   private startShowUser = 0;
-  private url: SafeResourceUrl;
-  private commentsShow: CommentShow[] = [];
-  private relationShow: Show[] = [];
-  private validationMessageForm: FormGroup;
+  public url: SafeResourceUrl;
+  public commentsShow: CommentShow[] = [];
+  public relationShow: Show[] = [];
+  public validationMessageForm: FormGroup;
 
-  constructor(private decorator: DecoratorService, private userComponent: UserComponent, private sanitizer: DomSanitizer, private router: Router, private activatedRoute: ActivatedRoute, private showService: ShowService, private fb: FormBuilder, private locStrat: LocationStrategy) { 
+  constructor(private decorator: DecoratorService, public userComponent: UserComponent, private sanitizer: DomSanitizer, private router: Router, private activatedRoute: ActivatedRoute, private showService: ShowService, private fb: FormBuilder, private locStrat: LocationStrategy) { 
     this.decorator.clearActive();
 
     this.validationMessageForm = fb.group({
@@ -110,7 +112,7 @@ export class ShowComponent {
     )
   }
 
-  private changePointUser() {
+  public changePointUser() {
     this.showService.updatePoint(this.nameShow, { points: this.startShowUser }).subscribe(
       response => {
         this.loadPointShow();
@@ -118,7 +120,7 @@ export class ShowComponent {
     )
   }
 
-  private deleteComment(id: number){
+  public deleteComment(id: number){
     this.showService.deleteCommentShow(id).subscribe(
       response => {
         this.loadComments();
@@ -126,7 +128,7 @@ export class ShowComponent {
     );
   }
 
-  private newComment(message: string) {
+  public newComment(message: string) {
     this.validationMessageForm = this.fb.group({
       'message': [null, Validators.required],
     });

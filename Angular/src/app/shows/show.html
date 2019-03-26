@@ -12,7 +12,7 @@
 		<div id="introCarousel" class="carousel  slide carousel-fade" data-ride="carousel">
 
 			<div *ngIf="show !== undefined" class="carousel-inner" role="listbox">
-				<div class="carousel-item active" [style.backgroundImage]="'url(https://localhost:8443/'+ show.image +')'">
+				<div class="carousel-item active" [style.backgroundImage]="'url(' + URL + show.image +')'">
 					<div class="carousel-container">
 						<div class="carousel-content">
 							<h2>Sinopsis</h2>
@@ -73,7 +73,7 @@
 	<!--==========================
                 Call To Action Section
                 ============================-->
-	<section *ngIf="show !== undefined && userComponent.isLogged" id="call-to-action" [style.backgroundImage]="'url(https://localhost:8443/'+ show.image +')'"
+	<section *ngIf="show !== undefined && userComponent.isLogged" id="call-to-action" [style.backgroundImage]="'url(' + URL + show.image +')'"
 	 style="background: fixed center, rgba(0, 0, 0, 0.7) !important;" class="wow fadeIn">
 		<div class="container text-center prueba">
 			<h3>Puntua la Serie</h3>
@@ -99,7 +99,7 @@
 			<div id="elements" class="row">
 				<div *ngFor="let rShow of relationShow" class="col-lg-3 col-md-3 portfolio-item filter-app wow fadeInUp">
 					<div class="portfolio-wrap">
-						<figure [style.backgroundImage]="'url(https://localhost:8443/'+ rShow.image +')'">
+						<figure [style.backgroundImage]="'url(' + URL + rShow.image +')'">
 							<p class="textPortfolio">{{rShow.synopsis}}</p>
 						</figure>
 

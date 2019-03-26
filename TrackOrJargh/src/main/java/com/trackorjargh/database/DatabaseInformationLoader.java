@@ -2,6 +2,8 @@ package com.trackorjargh.database;
 
 import javax.annotation.PostConstruct;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -31,6 +33,8 @@ import com.trackorjargh.javarepository.UserRepository;
 @Component
 public class DatabaseInformationLoader {
 
+	private static final Logger log = LoggerFactory.getLogger(DatabaseInformationLoader.class);
+
 	@Autowired
 	private FilmRepository filmRepository;
 	@Autowired
@@ -55,7 +59,16 @@ public class DatabaseInformationLoader {
 	private PointShowRepository pointShowRepository;
 
 	@PostConstruct
-	private void initDatabase() {
+	private void init() {
+		if (filmRepository.findById(1L) == null) {
+			log.info("Loading data in BBDD");
+			loadData();
+		} else {
+			log.info("The data are already loaded in the bbdd");
+		}
+	}
+	
+	private void loadData() {
 		// Test Data User
 		User u1 = new User("oscar", "1234", "oscarmola@gmail.com", "/img/default-user.png", true, "ROLE_USER");
 		userRepository.save(u1);

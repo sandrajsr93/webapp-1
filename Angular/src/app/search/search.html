@@ -20,7 +20,7 @@
 		<div id="elements" class="row ">
 			<div *ngFor="let content of contents" class="col-lg-3 col-md-3 portfolio-item filter-app wow fadeInUp">
 				<div class="portfolio-wrap">
-					<figure [style.backgroundImage]="'url(https://localhost:8443/'+ content.image +')'">
+					<figure [style.backgroundImage]="'url(' + URL + content.image +')'">
 						<p class="textPortfolio">{{content.synopsis}}</p>
 					</figure>
 

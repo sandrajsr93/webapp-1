@@ -5,5 +5,6 @@
 
 export const environment = {
   production: false,
-  apiBase: "https://localhost:8443/api/"
+  apiBase: "https://localhost:8443/api/",
+  url: "https://localhost:8443/"
 };

@@ -10,24 +10,36 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.fasterxml.jackson.annotation.JsonView;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.trackorjargh.grafics.NumberItemByGende;
+import com.trackorjargh.javaclass.Book;
+import com.trackorjargh.javaclass.Film;
 import com.trackorjargh.javaclass.Gender;
+import com.trackorjargh.javaclass.Shows;
 import com.trackorjargh.javarepository.GenderRepository;
 
 @RestController
 @RequestMapping("/api")
 public class ApiGenderController {
-	
+
 	private static final Logger log = LoggerFactory.getLogger(ApiGenderController.class);
 
 	private final GenderRepository genderRepository;
-	
+
 	public ApiGenderController(GenderRepository genderRepository) {
 		super();
 		this.genderRepository = genderRepository;
 	}
-
+	
+	public interface showGenders extends Gender.ListInformation, Film.NameFilmAndType, Book.NameBookAndType, Shows.NameFilmAndType {
+	}
+	
+	@RequestMapping(value = "/generos", method = RequestMethod.GET)
+	@JsonView(showGenders.class)
+	public List<Gender> getGenders() {
+		return genderRepository.findAll();
+	}
 
 	@RequestMapping(value = "/generos/grafico", method = RequestMethod.GET)
 	public List<NumberItemByGende> getGraphicGende() {
@@ -42,11 +54,11 @@ public class ApiGenderController {
 
 			listGende.add(new NumberItemByGende(gende.getName(), sumGende));
 		}
-		
+
 		log.info("Genres JSON: \n {}", graph2json(listGende));
 		return listGende;
 	}
-	
+
 	public static String graph2json(List<?> graphs) {
 		ObjectMapper mapper = new ObjectMapper();
 		try {

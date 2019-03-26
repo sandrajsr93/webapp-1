@@ -25,13 +25,13 @@ import { User } from '../Interfaces/User/user.component';
 export class AdministrationComponent {
     private contentType: string;
     private contentName: string;
-    private film: Film;
-    private show: Show;
-    private book: Book;
-    private user: User;
+    public film: Film;
+    public show: Show;
+    public book: Book;
+    public user: User;
     private del: boolean;
     private selectedRole: string;
-    private selectedTab: string;
+    public selectedTab: string;
     private genres = {
         aventuras: false,
         superheroes: false,

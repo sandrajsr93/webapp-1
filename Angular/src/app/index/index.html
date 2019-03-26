@@ -6,7 +6,7 @@
 		<div id="introCarousel" class="carousel slide carousel-fade" data-ride="carousel">
 			<ngb-carousel class="carousel-inner">
 				<ng-template *ngFor="let elem of carousel" ngbSlide>
-					<div class="carousel-item active" [style.backgroundImage]="'url(https://localhost:8443/'+ elem.image +')'">
+					<div class="carousel-item active" [style.backgroundImage]="'url(' + URL + elem.image +')'">
 						<div class="carousel-container">
 							<div class="carousel-content">
 								<h2>{{elem.name}}</h2>

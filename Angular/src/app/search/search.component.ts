@@ -9,6 +9,7 @@ import { SearchService } from './search.service';
 import { UserComponent } from '../user/user.component';
 
 import { ListsService } from '../lists/lists.service';
+import { environment } from '../../environments/environment.prod';
 
 const NUM_ELEMENS_FROM_PAGE = 4;
 
@@ -19,16 +20,17 @@ const NUM_ELEMENS_FROM_PAGE = 4;
 })
 
 export class SearchComponent {
-  private contents = [];
+  public URL = environment.url.substring(0, environment.url.length - 1);
+  public contents = [];
   private countPages = [1, 1, 1];
   private totalPages = [0, 0, 0];
-  private morePages = false;
+  public morePages = false;
   private termSearch = "titulo";
-  private search = "";
-  private term = new FormControl();
-  private termType = new FormControl();
-  private addedContent = false;
-  private errorAddedContent = false;
+  public search = "";
+  public term = new FormControl();
+  public termType = new FormControl();
+  public addedContent = false;
+  public errorAddedContent = false;
 
   constructor(private decorator: DecoratorService, private userComponent: UserComponent, private commonFunction: CommonFunction, private searchService: SearchService, private serviceList: ListsService) {
     this.decorator.activeButton("search");
