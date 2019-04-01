@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { AfterViewInit } from '@angular/core';
 
 import { DecoratorService } from '../header/decorator.service';
 
@@ -10,7 +9,7 @@ import { BookService } from '../books/book.service';
 import { GenderService } from '../genders/gender.service';
 
 import * as c3 from 'c3';
-import { environment } from '../../environments/environment.prod';
+import { environment } from '../../environments/environment';
 
 @Component({
   selector: 'index',
