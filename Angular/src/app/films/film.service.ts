@@ -31,6 +31,8 @@ export class FilmService {
     };
 
     getGrafic() {
+        console.log("Request GET graphic films");
+
         return this.http.get(BASE_URL + "grafico").map(
             response => response.json()
         );

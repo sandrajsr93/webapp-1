@@ -18,39 +18,43 @@ export class ListsService {
         );
     }
 
-    public createList(name:string){
-        return this.http.post(BASE_URL, {name: name}, { withCredentials: true }).map(
-        response => response,
-        error => error
+    public createList(name: string) {
+        console.log("Request POST list: " + name);
+
+        return this.http.post(BASE_URL, { name: name }, { withCredentials: true }).map(
+            response => response,
+            error => error
         );
     }
 
-    public deleteList(nameList:string){
+    public deleteList(nameList: string) {
+        console.log("Request DELETE list: " + nameList);
+
         return this.http.delete(BASE_URL + nameList, { withCredentials: true }).map(
             response => response.json(),
-            error => error   
+            error => error
         )
     }
 
-    public addElement(list){
+    public addElement(list) {
         return this.http.put(BASE_URL, list, { withCredentials: true }).map(
-        response => response.json(),
-        error => error
+            response => response.json(),
+            error => error
         )
 
     }
 
-    public deleteElement(nameList:string, typeContent:string, nameContent:string){
+    public deleteElement(nameList: string, typeContent: string, nameContent: string) {
         return this.http.delete(BASE_URL + nameList + typeContent + nameContent, { withCredentials: true }).map(
             response => response.json(),
             error => error
-            )
+        )
     }
 
-    public getContentList(){
+    public getContentList() {
         return this.http.get(BASE_URL + "contenido", { withCredentials: true }).map(
             response => response.json(),
-            error => error   
+            error => error
         )
     }
 }

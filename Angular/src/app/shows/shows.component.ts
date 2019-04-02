@@ -8,7 +8,7 @@ import { ListsService } from '../lists/lists.service';
 import { Show } from '../Interfaces/Show/show.component';
 
 import { UserComponent } from '../user/user.component';
-import { environment } from '../../environments/environment.prod';
+import { environment } from '../../environments/environment';
 
 
 

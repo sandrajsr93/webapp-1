@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { AfterViewInit } from '@angular/core';
 
 import { DecoratorService } from '../header/decorator.service';
 
@@ -10,7 +9,7 @@ import { BookService } from '../books/book.service';
 import { GenderService } from '../genders/gender.service';
 
 import * as c3 from 'c3';
-import { environment } from '../../environments/environment.prod';
+import { environment } from '../../environments/environment';
 
 @Component({
   selector: 'index',
@@ -71,6 +70,8 @@ export class IndexComponent {
   }
 
   private graficFilms(films){
+		console.log("Loaded graphic of movies: \n" + JSON.stringify(films));
+
     let chart = c3.generate({
       bindto: '#bestFilmsPoints',
       data: {
@@ -90,6 +91,8 @@ export class IndexComponent {
   }
 
   private graficShows(shows){
+		console.log("Loaded graphic of shows: \n" + JSON.stringify(shows));
+
 		let chart = c3.generate({
 			bindto : '#bestShowsPoints',
 			data : {
@@ -109,6 +112,8 @@ export class IndexComponent {
   };
 	
 	private graficBooks(books){
+		console.log("Loaded graphic of books: \n" + JSON.stringify(books));
+
 		var chart = c3.generate({
 			bindto : '#bestBooksPoints',
 			data : {
@@ -128,6 +133,8 @@ export class IndexComponent {
   }
 	
 	private graficGende(genders){
+		console.log("Loaded graphic of genders: \n" + JSON.stringify(genders));
+
 		var chart = c3.generate({
 			bindto : '#gende',
 			data : {
