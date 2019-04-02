@@ -278,7 +278,7 @@ public class DatabaseInformationLoader {
 		f17.getGenders().add(g6);
 		filmRepository.save(f17);
 
-		Film f18 = new Film("El rey huevón", "Matthew Broderick, Jeremy Irons, James Earl Jones",
+		Film f18 = new Film("El rey león", "Matthew Broderick, Jeremy Irons, James Earl Jones",
 				"Roger Allers, Rob Minkoff",
 				"Óscar es un león, hijo del rey de la selva Mufasa. Cierto día, jugando al bascket con amigos unos tipos del barrio le metieron en un lio, y su padre le decia una y otra vez con tu tio y con tu tia te irás a Bel-Air",
 				"/img/films/reyLeon.jpg", "https://www.youtube.com/embed/4sj1MT05lAA", 1994);
@@ -305,7 +305,7 @@ public class DatabaseInformationLoader {
 		f20.getGenders().add(g10);
 		filmRepository.save(f20);
 
-		Film f21 = new Film("Buscando al memo", " Albert Brooks, Ellen DeGeneres, Alexander Gould",
+		Film f21 = new Film("Buscando a nemo", " Albert Brooks, Ellen DeGeneres, Alexander Gould",
 				" Andrew Stanton, Lee Unkrich",
 				"El pequeño Alfonso, un pececillo hijo único que perdió a su madre antes de nacer, es muy querido y excesivamente protegido por su padre. Nemo ha sido pescado y sacadi de la gran barrera del arrecife australiano y ahora vive en una pequeña pecera en la oficina de un dentista de Sidney. El tímido padre de Nemo se embarcará en una peligrosa aventura donde conoce Dory. Juntos vane...",
 				"/img/films/buscandoAnemo.jpg", "https://www.youtube.com/embed/wZdpNglLbt8", 2003);
@@ -315,7 +315,7 @@ public class DatabaseInformationLoader {
 		filmRepository.save(f21);
 
 		// Test Data Book
-		Book b1 = new Book("Los Juegos del Fiambre", "",
+		Book b1 = new Book("Los Juegos del Hambre", "",
 				"Los juegos del hambre se desarrolla en un país llamado Panem, lo que es en realidad una civilización postapocalíptica ubicada en lo que antes era América del Norte.",
 				"/img/los_juegos_del_hambre.jpg", 2008);
 		b1.getGenders().add(g1);
