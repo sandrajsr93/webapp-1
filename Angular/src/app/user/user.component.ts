@@ -27,6 +27,8 @@ export class UserComponent {
     }
 
     private processLogInResponse(user) {
+        console.log("Logged succesfuly " + user.name);
+        
         this.isLogged = true;
         this.user = user;
         this.isModerator = this.user.roles.indexOf('ROLE_MODERATOR') !== -1;

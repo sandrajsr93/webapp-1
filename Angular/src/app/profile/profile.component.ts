@@ -103,6 +103,8 @@ export class ProfileComponent {
           this.errorCreateList = true;
           setTimeout(() => this.closeErrorCreateListAlert(), 20000);
         } 
+
+        console.log("Created list correctly");
         this.loadLists();
         this.userComponent.reqLists();          
       }    
@@ -188,6 +190,8 @@ export class ProfileComponent {
   public deleteList(listName: string) {
     this.serviceList.deleteList(listName).subscribe(
       lists => {
+        console.log("Deleted list correctly");
+
         this.loadLists();
         this.userComponent.reqLists();
         this.loadUrlPdf();

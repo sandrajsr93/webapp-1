@@ -11,6 +11,8 @@ export class GenderService {
     constructor(private http:Http) { }
 
     getGrafic(){
+        console.log("Request GET graphic genders");
+
         return this.http.get(BASE_URL + "grafico").map(
             response => response.json()
         );

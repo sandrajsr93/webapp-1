@@ -1,26 +1,26 @@
 <section id="administration" class="mt-5">
 
 	<div class="container">
-		<div class="form-control text-center mx-auto" id="header-Report">
+		<div class="text-center mx-auto" id="header-Report">
 			<span>
 				<a [routerLink]="['/administracion']">Administración</a>
 			</span>
 		</div>
 
 		<!-- Mirar esta section -->
-		<div id="report" class="container contents form-control">
+		<div id="report" class="container contents">
 
 			<ngb-tabset #t="ngbTabset" type="pills" [activeId]="selectedTab" >
 				<ngb-tab id="users" title="Usuarios" *ngIf="user">
 					<ng-template ngbTabContent>
 						<form *ngIf="user" (ngSubmit)="editUser()" >
 							<label for="name">Usuario a modificar:</label>
-							<input #name type="text" [(ngModel)]="contentName" tabindex="2" class="form-group form-control" name="name" disabled >
+							<input #name type="text" [(ngModel)]="contentName" tabindex="2" class="form-group" name="name" disabled >
 							<label for="delete">Eliminar usuario:</label>
 							<input #delete name="delete" type="checkbox" [(ngModel)]="del">
 							<br>
 							<label for="email">Correo electrónico:</label>
-							<input #email type="text" [(ngModel)]="user.email" tabindex="2" class="form-group form-control" name="email" >
+							<input #email type="text" [(ngModel)]="user.email" tabindex="2" class="form-group" name="email" >
 							<label for="accountType">Tipo de cuenta:</label>
 							<select #accountType name="accountType" (change)="updateRoles()" [(ngModel)]="selectedRole" >
 								<option [value]="'ROLE_USER'" [selected]="user.roles.length === 1" >Usuario</option>
@@ -36,24 +36,24 @@
 					<ng-template ngbTabContent>
 						<form (ngSubmit)="editFilm()">
 							<label for="name">Película a modificar:</label>
-							<input #name type="text" tabindex="2" class="form-group form-control" name="name" [(ngModel)]="contentName" disabled>
+							<input #name type="text" tabindex="2" class="form-group" name="name" [(ngModel)]="contentName" disabled>
 							<label for="delete">Eliminar película:</label>
 							<input #delete name="delete" type="checkbox" [(ngModel)]="del">
 							<br>
 							<label for="image">Cambiar imagen</label>
 							<input type="file" (change)="fileChange(image)" #image>
 							<label for="newName">Modificar nombre:</label>
-							<input #newName type="text" tabindex="2" class="form-group form-control" placeholder="Nuevo nombre" name="newName" [(ngModel)]="film.name">
+							<input #newName type="text" tabindex="2" class="form-group" placeholder="Nuevo nombre" name="newName" [(ngModel)]="film.name">
 							<label for="actors">Actores:</label>
-							<input #actors type="text" tabindex="2" class="form-group form-control" placeholder="Actores" name="actors" [(ngModel)]="film.actors">
+							<input #actors type="text" tabindex="2" class="form-group" placeholder="Actores" name="actors" [(ngModel)]="film.actors">
 							<label for="directors">Directores:</label>
-							<input #directors type="text" tabindex="2" class="form-group form-control" placeholder="Directores" name="directors" [(ngModel)]="film.directors">
+							<input #directors type="text" tabindex="2" class="form-group" placeholder="Directores" name="directors" [(ngModel)]="film.directors">
 							<label for="year">Año:</label>
-							<input #year type="text" tabindex="2" class="form-group form-control" placeholder="Año" name="year" [(ngModel)]="film.year">
+							<input #year type="text" tabindex="2" class="form-group" placeholder="Año" name="year" [(ngModel)]="film.year">
 							<label for="trailer">Trailer:</label>
-							<input #trailer type="text" tabindex="2" class="form-group form-control" placeholder="trailer" name="trailer" [(ngModel)]="film.trailer">
+							<input #trailer type="text" tabindex="2" class="form-group" placeholder="trailer" name="trailer" [(ngModel)]="film.trailer">
 							<label for="synopsis">Sinopsis:</label>
-							<textarea #synopsis tabindex="2" class="form-group form-control" placeholder="Sinopsis" name="synopsis" [(ngModel)]="film.synopsis"></textarea>
+							<textarea #synopsis tabindex="2" class="form-group" placeholder="Sinopsis" name="synopsis" [(ngModel)]="film.synopsis"></textarea>
 							<div class="btn-group-toggle">
 								<label class="btn-primary" ngbButtonLabel>
 									<input type="checkbox" ngbButton [(ngModel)]="genres.aventuras" name="Aventuras" (change)="updateGenres('Aventuras', genres.aventuras)"> Aventuras
@@ -103,24 +103,24 @@
 					<ng-template ngbTabContent>
 						<form (ngSubmit)="editShow()">
 							<label for="name">Película a modificar:</label>
-							<input #name type="text" tabindex="2" class="form-group form-control" name="name" [(ngModel)]="contentName" disabled>
+							<input #name type="text" tabindex="2" class="form-group" name="name" [(ngModel)]="contentName" disabled>
 							<label for="delete">Eliminar película:</label>
 							<input #delete name="delete" type="checkbox" [(ngModel)]="del">
 							<br>
 							<label for="image">Cambiar imagen</label>
 							<input type="file" (change)="fileChange(image)" #image>
 							<label for="newName">Modificar nombre:</label>
-							<input #newName type="text" tabindex="2" class="form-group form-control" placeholder="Nuevo nombre" name="newName" [(ngModel)]="show.name">
+							<input #newName type="text" tabindex="2" class="form-group" placeholder="Nuevo nombre" name="newName" [(ngModel)]="show.name">
 							<label for="actors">Actores:</label>
-							<input #actors type="text" tabindex="2" class="form-group form-control" placeholder="Actores" name="actors" [(ngModel)]="show.actors">
+							<input #actors type="text" tabindex="2" class="form-group" placeholder="Actores" name="actors" [(ngModel)]="show.actors">
 							<label for="directors">Directores:</label>
-							<input #directors type="text" tabindex="2" class="form-group form-control" placeholder="Directores" name="directors" [(ngModel)]="show.directors">
+							<input #directors type="text" tabindex="2" class="form-group" placeholder="Directores" name="directors" [(ngModel)]="show.directors">
 							<label for="year">Año:</label>
-							<input #year type="text" tabindex="2" class="form-group form-control" placeholder="Año" name="year" [(ngModel)]="show.year">
+							<input #year type="text" tabindex="2" class="form-group" placeholder="Año" name="year" [(ngModel)]="show.year">
 							<label for="trailer">Trailer:</label>
-							<input #trailer type="text" tabindex="2" class="form-group form-control" placeholder="trailer" name="trailer" [(ngModel)]="show.trailer">
+							<input #trailer type="text" tabindex="2" class="form-group" placeholder="trailer" name="trailer" [(ngModel)]="show.trailer">
 							<label for="synopsis">Sinopsis:</label>
-							<textarea #synopsis tabindex="2" class="form-group form-control" placeholder="Sinopsis" name="synopsis" [(ngModel)]="show.synopsis"></textarea>
+							<textarea #synopsis tabindex="2" class="form-group" placeholder="Sinopsis" name="synopsis" [(ngModel)]="show.synopsis"></textarea>
 							<div class=" btn-group-toggle">
 								<label class="btn-primary" ngbButtonLabel>
 									<input type="checkbox" ngbButton [(ngModel)]="genres.aventuras" name="Aventuras" (change)="updateGenres('Aventuras', genres.aventuras)"> Aventuras
@@ -170,22 +170,22 @@
 					<ng-template ngbTabContent>
 						<form (ngSubmit)="editBook()">
 							<label for="name">Película a modificar:</label>
-							<input #name type="text" tabindex="2" class="form-group form-control" name="name" [(ngModel)]="contentName" disabled>
+							<input #name type="text" tabindex="2" class="form-group" name="name" [(ngModel)]="contentName" disabled>
 							<label for="delete">Eliminar película:</label>
 							<input #delete name="delete" type="checkbox" [(ngModel)]="del">
 							<br>
 							<label for="image">Cambiar imagen</label>
 							<input type="file" (change)="fileChange(image)" #image>
 							<label for="newName">Modificar nombre:</label>
-							<input #newName type="text" tabindex="2" class="form-group form-control" placeholder="Nuevo nombre" name="newName" [(ngModel)]="book.name">
+							<input #newName type="text" tabindex="2" class="form-group" placeholder="Nuevo nombre" name="newName" [(ngModel)]="book.name">
 							<label for="authors">Autor/es:</label>
-							<input #authors type="text" tabindex="2" class="form-group form-control" placeholder="Autor/es" name="authors" [(ngModel)]="book.authors">
+							<input #authors type="text" tabindex="2" class="form-group" placeholder="Autor/es" name="authors" [(ngModel)]="book.authors">
 							<label for="directors">Directores:</label>
-							<input #directors type="text" tabindex="2" class="form-group form-control" placeholder="Directores" name="directors" [(ngModel)]="book.directors">
+							<input #directors type="text" tabindex="2" class="form-group" placeholder="Directores" name="directors" [(ngModel)]="book.directors">
 							<label for="year">Año:</label>
-							<input #year type="text" tabindex="2" class="form-group form-control" placeholder="Año" name="year" [(ngModel)]="book.year">
+							<input #year type="text" tabindex="2" class="form-group" placeholder="Año" name="year" [(ngModel)]="book.year">
 							<label for="synopsis">Sinopsis:</label>
-							<textarea #synopsis tabindex="2" class="form-group form-control" placeholder="Sinopsis" name="synopsis" [(ngModel)]="book.synopsis"></textarea>
+							<textarea #synopsis tabindex="2" class="form-group" placeholder="Sinopsis" name="synopsis" [(ngModel)]="book.synopsis"></textarea>
 							<div class=" btn-group-toggle">
 								<label class="btn-primary" ngbButtonLabel>
 									<input type="checkbox" ngbButton [(ngModel)]="genres.aventuras" name="Aventuras" (change)="updateGenres('Aventuras', genres.aventuras)"> Aventuras

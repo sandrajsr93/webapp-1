@@ -32,6 +32,8 @@ export class ShowService {
     };
 
     getGrafic(){
+        console.log("Request GET graphic shows");
+        
         return this.http.get(BASE_URL + "grafico").map(
             response => response.json()
         );
