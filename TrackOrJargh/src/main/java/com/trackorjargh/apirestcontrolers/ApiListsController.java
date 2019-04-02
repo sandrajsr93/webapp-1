@@ -3,6 +3,10 @@ package com.trackorjargh.apirestcontrolers;
 import java.util.LinkedList;
 import java.util.List;
 
+import javax.transaction.Transactional;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,6 +18,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.fasterxml.jackson.annotation.JsonView;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.trackorjargh.commoncode.CommonCodeUser;
 import com.trackorjargh.component.UserComponent;
 import com.trackorjargh.javaclass.Book;
@@ -31,6 +36,9 @@ import com.trackorjargh.javarepository.UserRepository;
 @RestController
 @RequestMapping("/api")
 public class ApiListsController {
+	
+	protected Logger logger = LoggerFactory.getLogger(this.getClass());
+
 	private final ListsRepository listsRepository;
 	private final UserRepository userRepository;
 	private final UserComponent userComponent;
@@ -82,11 +90,14 @@ public class ApiListsController {
 	@RequestMapping(value = "/listas", method = RequestMethod.POST)
 	@ResponseStatus(HttpStatus.CREATED)
 	@JsonView(basicInfoNewLists.class)
+	@Transactional
 	public ResponseEntity<Lists> addEmptyListInUser(@RequestBody Lists newList) {
 		Lists listUser = listsRepository.findByUserAndName(userComponent.getLoggedUser(), newList.getName());
 
 		if (listUser == null) {
-			return new ResponseEntity<>(commonCodeUser.addEmptyListInUser(newList.getName()), HttpStatus.OK);
+			Lists createList = commonCodeUser.addEmptyListInUser(newList.getName());
+			logger.info("Created list: {}", createList.getName());
+			return new ResponseEntity<>(createList, HttpStatus.OK);
 		} else {
 			return new ResponseEntity<>(HttpStatus.IM_USED);
 		}
@@ -131,12 +142,14 @@ public class ApiListsController {
 	}
 
 	@RequestMapping(value = "/listas/{nameList}", method = RequestMethod.DELETE)
+	@JsonView(Lists.BasicInformation.class)
 	public ResponseEntity<Boolean> deletedListInUser(@PathVariable String nameList) {
 		Lists listUser = listsRepository.findByUserAndName(userComponent.getLoggedUser(), nameList);
 
 		if (!listUser.getUser().getName().equals(userComponent.getLoggedUser().getName())) {
 			return new ResponseEntity<>(HttpStatus.FORBIDDEN);
 		} else {
+			logger.info("Deleted list: {}", listUser.getName());
 			listsRepository.delete(listUser);
 			return new ResponseEntity<>(true, HttpStatus.OK);
 		}

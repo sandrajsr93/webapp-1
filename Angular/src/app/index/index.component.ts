@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { AfterViewInit } from '@angular/core';
 
 import { DecoratorService } from '../header/decorator.service';
 
@@ -10,7 +9,7 @@ import { BookService } from '../books/book.service';
 import { GenderService } from '../genders/gender.service';
 
 import * as c3 from 'c3';
-import { environment } from '../../environments/environment.prod';
+import { environment } from '../../environments/environment';
 
 @Component({
 	selector: 'index',
@@ -54,37 +53,25 @@ export class IndexComponent {
 
 	ngAfterViewInit() {
 		this.filmService.getGrafic().subscribe(
-			films => this.graficFilms(this.changeLayoutChar(films, "Puntos"))
+			films => this.graficFilms(films)
 		);
 
 		this.showService.getGrafic().subscribe(
-			shows => this.graficShows(this.changeLayoutChar(shows, "Puntos"))
+			shows => this.graficShows(shows)
 		);
 
 		this.bookService.getGrafic().subscribe(
-			books => this.graficBooks(this.changeLayoutChar(books, "Puntos"))
+			books => this.graficBooks(books)
 		);
 
 		this.genderService.getGrafic().subscribe(
-			genders => this.graficGende(this.changeLayoutChar(genders, "Contenido por genero"))
+			genders => this.graficGende(genders)
 		);
 	}
 
-	private changeLayoutChar(list, showName) {
-		let newList = [];
-
-		list.forEach(element => {
-			let newElement = {};
-			newElement["name"] = element.name;
-			newElement[showName] = element.points
-
-			newList.push(newElement);
-		});
-
-		return newList;
-	}
-
 	private graficFilms(films) {
+		console.log("Loaded graphic of movies: \n" + JSON.stringify(films));
+
 		let chart = c3.generate({
 			bindto: '#bestFilmsPoints',
 			data: {
@@ -92,11 +79,8 @@ export class IndexComponent {
 				type: 'bar',
 				keys: {
 					x: 'name',
-					value: ['Puntos'],
+					value: ['points'],
 				}
-			},
-			legend: {
-				show: false
 			},
 			axis: {
 				x: {
@@ -107,6 +91,8 @@ export class IndexComponent {
 	}
 
 	private graficShows(shows) {
+		console.log("Loaded graphic of shows: \n" + JSON.stringify(shows));
+
 		let chart = c3.generate({
 			bindto: '#bestShowsPoints',
 			data: {
@@ -114,11 +100,8 @@ export class IndexComponent {
 				type: 'bar',
 				keys: {
 					x: 'name',
-					value: ['Puntos'],
+					value: ['points'],
 				}
-			},
-			legend: {
-				show: false
 			},
 			axis: {
 				x: {
@@ -129,6 +112,8 @@ export class IndexComponent {
 	};
 
 	private graficBooks(books) {
+		console.log("Loaded graphic of books: \n" + JSON.stringify(books));
+
 		var chart = c3.generate({
 			bindto: '#bestBooksPoints',
 			data: {
@@ -136,11 +121,8 @@ export class IndexComponent {
 				type: 'bar',
 				keys: {
 					x: 'name',
-					value: ['Puntos'],
+					value: ['points'],
 				}
-			},
-			legend: {
-				show: false
 			},
 			axis: {
 				x: {
@@ -151,6 +133,8 @@ export class IndexComponent {
 	}
 
 	private graficGende(genders) {
+		console.log("Loaded graphic of genders: \n" + JSON.stringify(genders));
+
 		var chart = c3.generate({
 			bindto: '#gende',
 			data: {
@@ -158,11 +142,8 @@ export class IndexComponent {
 				type: 'bar',
 				keys: {
 					x: 'name',
-					value: ['Contenido por genero'],
+					value: ['points'],
 				}
-			},
-			legend: {
-				show: false
 			},
 			axis: {
 				x: {

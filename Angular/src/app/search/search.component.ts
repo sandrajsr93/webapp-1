@@ -9,7 +9,7 @@ import { SearchService } from './search.service';
 import { UserComponent } from '../user/user.component';
 
 import { ListsService } from '../lists/lists.service';
-import { environment } from '../../environments/environment.prod';
+import { environment } from '../../environments/environment';
 
 const NUM_ELEMENS_FROM_PAGE = 4;
 
