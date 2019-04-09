@@ -13,7 +13,7 @@ services:
     image: codeurjc/webapp-1-master
     entrypoint: ["./wait-for-it.sh", "db:3306", "--", "java", "-jar", "webapp-1.java"]
     ports:
-      - 8443:8443
+      - 8000:8000
     depends_on:
       - db
     environment:
