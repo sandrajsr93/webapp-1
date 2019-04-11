@@ -30,4 +30,4 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 For the deployment we will use docker. After execute the docker script (for Windows `./start_docker.ps1` and Mac/Linux `./start_docker.sh`), the both aplication(traditional and SPA) will compiled and they deployed on the same server.
 
-To access to SPA we will use `https://localhost:8443/` and to access at Angular we use `https://localhost:8443/new`.
+To access to SPA we will use `http://localhost:8000/` and to access at Angular we use `http://localhost:8000/new`.
