@@ -64,7 +64,7 @@ $(function() {
 				type : 'bar',
 				keys : {
 					x : 'name',
-					value : [ 'numItems' ],
+					value : [ 'points' ],
 				}
 			},
 			axis : {
