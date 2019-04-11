@@ -20,9 +20,8 @@
 
 					<form *ngIf="user" (ngSubmit)="editUser(email.value, pass.value)" style="display: block;">
 						<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
-							<img *ngIf="user" id="userImage" class="img-responsive rounded-circle"
-								src="https://localhost:8443{{user.image}}" alt="Imagen de perfil">
-						</div>
+							<img *ngIf="user" id="userImage" class="img-responsive rounded-circle" src="{{URL}}{{user.image}}" alt="Imagen de perfil">
+						</div>			
 						<br>
 						<input type="file" (change)="fileChange(image)" #image />
 						<div class="form-group pt-3">
