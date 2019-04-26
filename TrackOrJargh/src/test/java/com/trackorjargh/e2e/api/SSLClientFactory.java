@@ -1,4 +1,4 @@
-package com.trackorjargh.integration;
+package com.trackorjargh.e2e.api;
 
 import java.security.KeyManagementException;
 import java.security.NoSuchAlgorithmException;

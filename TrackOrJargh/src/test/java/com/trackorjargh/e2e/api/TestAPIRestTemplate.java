@@ -1,4 +1,4 @@
-package com.trackorjargh.integration;
+package com.trackorjargh.e2e.api;
 
 import static java.lang.invoke.MethodHandles.lookup;
 import static org.junit.Assert.assertEquals;
@@ -16,8 +16,8 @@ import org.springframework.web.client.RestTemplate;
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.trackorjargh.e2e.api.SSLClientFactory.HttpClientType;
 import com.trackorjargh.grafics.Grafics;
-import com.trackorjargh.integration.SSLClientFactory.HttpClientType;
 import com.trackorjargh.javaclass.Gender;
 
 public class TestAPIRestTemplate extends ElasTestBase {
