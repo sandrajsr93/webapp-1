@@ -1,4 +1,4 @@
-package com.trackorjargh.integration;
+package com.trackorjargh.e2e.api;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
