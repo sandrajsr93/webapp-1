@@ -97,7 +97,7 @@
 								(click)="changeShowAddList()">
 								<i class="ion-plus-circled"></i>
 							</button>
-							<div [ngbCollapse]="isCollapsed" id="showAddList">
+							<div *ngIf="showAddList" id="showAddList">
 								<input #listName type="text" name="listName" tabindex="2"
 									class="form-group form-control" placeholder="Nombre de la lista" value=""
 									[formControl]="newListValidation.controls['name']" />
@@ -106,7 +106,8 @@
 										value="Crear" (click)="createList(listName.value); listName.value = ''"
 										[disabled]="!newListValidation.valid">
 								</div>
-								<ngb-alert *ngIf="errorCreateList" type="danger" (close)="closeErrorCreateListAlert()">
+
+                <ngb-alert *ngIf="errorCreateList" type="danger" (close)="closeErrorCreateListAlert()">
 									Vaya!! Parece que ya tienes una lista
 									con el mismo nombre, por favor elige uno nuevo.</ngb-alert>
 							</div>
