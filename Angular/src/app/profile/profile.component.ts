@@ -86,10 +86,10 @@ export class ProfileComponent {
   }
 
   public changeShowAddList() {
-    if (this.showAddList) {
-      this.showAddList = false;
+    if (this.isCollapsed) {
+      this.isCollapsed = false;
     } else {
-      this.showAddList = true;
+      this.isCollapsed = true;
     }
   }
 
