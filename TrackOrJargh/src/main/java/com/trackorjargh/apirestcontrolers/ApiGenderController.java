@@ -45,14 +45,15 @@ public class ApiGenderController {
 	public List<Grafics> getGraphicGende() {
 		List<Grafics> listGende = new ArrayList<>();
 
-		int sumGende = 0;
+		int sumGende;
 		List<Gender> arrayGende = genderRepository.findAll();
-		for (int x=0; x < arrayGende.size(); x++) {		
-			sumGende += arrayGende.get(x).getFilms().size();
-			sumGende += arrayGende.get(x).getBooks().size();
-			sumGende += arrayGende.get(x).getShows().size();
+		for (Gender gende : genderRepository.findAll()) {
+			sumGende = 0;
+			sumGende += gende.getFilms().size();
+			sumGende += gende.getBooks().size();
+			sumGende += gende.getShows().size();
 			
-			listGende.add(new Grafics(arrayGende.get(x).getName(), sumGende));
+			listGende.add(new Grafics(gende.getName(), sumGende));
 
 		}
 		
