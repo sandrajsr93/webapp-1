@@ -97,7 +97,7 @@
 								(click)="changeShowAddList()">
 								<i class="ion-plus-circled"></i>
 							</button>
-							<div [ngbCollapse]="isCollapsed" id="showAddList">
+							<div *ngIf="showAddList" id="showAddList">
 								<input #listName type="text" name="listName" tabindex="2"
 									class="form-group form-control" placeholder="Nombre de la lista" value=""
 									[formControl]="newListValidation.controls['name']" />
