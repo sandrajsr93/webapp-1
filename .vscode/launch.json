@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-Application<TrackOrJargh>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "console": "internalConsole",
+            "mainClass": "com.trackorjargh.Application",
+            "projectName": "TrackOrJargh",
+            "args": ""
+        }
+    ]
+}
